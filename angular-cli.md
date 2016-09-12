@@ -230,7 +230,7 @@ Auch ein import von styles und scripts über die angular-cli.json soll in den n�
 ...
 </pre>
 
-Zur Zeit des Artikels ist die generstion von Routen deaktiviert, das soll natürlich nach dem gesehenen Schema funktionieren `ng g route [route]`  
+Zur Zeit des Artikels ist die generation von Routen deaktiviert, das soll natürlich nach dem gesehenen Schema funktionieren `ng g route [route]`  
 Auch macht man sich gerade Gedanken wie man die cli für Plugins öffnen kann. 
 
 
