@@ -5,7 +5,8 @@ Seit Brad Green auf der ng-conf verkündete angular2 sei kein Framework mehr son
 Der interesanteste Teil (für mich jedenfalls) ist die cli (command line interface) angular-cli.
 
 Ich werde hier erklären was die cli genau ist, was sie kann und warum man sie verwenden sollte.
-Aufgelockert wird das ganze dann mit einem beispiel zum nachcoden. Btw.: Wenn ich im weiteren verlauf von cli spreche, meine ich angular-cli.
+Aufgelockert wird das ganze dann mit einem Beispiel zum nachcoden.  
+Btw.: Wenn ich im weiteren verlauf von cli spreche, meine ich angular-cli.
 
 - Was ist angular-cli?
 - Warum sollte man es verwenden?
@@ -25,12 +26,12 @@ Die Entwicklungsumgebung umfasst:
  
 # Warum sollte man es verwenden?
 Dabei wird der Styleguide befolgt, wodurch man einen sehr aufgeräumten Code bekommt.
-Im Idealfall findet sich so jeder recht schnell in dem Projekt zurecht.
+Im Idealfall findet sich so jeder recht schnell in dem Projekt zurecht.  
 Im Urlaub fand ich ein Perfektes Beispiel anhand zweier Grundstücke die nebeneinenader liegen.
 
 ![Styleguide](https://pbs.twimg.com/media/Cp_9AwhXYAAqBJz.jpg:large)
 
-Ihr werdet warscheinlich Schnell erkenen, welcher von beiden den Styleguide ignoriert.
+Ihr werdet warscheinlich schnell erkenen, welcher von beiden den Styleguide ignoriert.
 
 # Wie verwendet man die anglar-cli?
 ## installation
@@ -43,7 +44,7 @@ Das Angular-cli team kam dem Wunsch der Comunity nach
 und wechselte von broccoli/SytemJS als Modulbundler zu Webpack. 
 Das war meiner Meinung nach eine sehr gute Entscheidung, 
 denn dadurch wurde die Nutzung sehr einfach.
-Zum Zeitpunkt als ich diesen Artikel Schrieb war `1.0.0-beta.11-webpack.2` aktuell.
+Zum Zeitpunkt als ich diesen Artikel schrieb war `1.0.0-beta.11-webpack.2` aktuell.
 
 ## Aufruf
 Wenn ihr die cli installiert habt könnt ihr in die cli in der CMD über ng erreichen.
@@ -68,6 +69,7 @@ hier können wir zur Zeit unter den vier populärsten wählen.
 `--style=sass`  
 `--style=less`  
 `--style=styl`  
+
 Dann werden die Styles bei jeder Ändrung kompiliert.
 
 
@@ -76,7 +78,7 @@ die je nach Netzwerkverbindung und Geschwindigkeit des Rechners auchmal etwas l�
 aber zur Not einfach mal einen Kaffe holen.
 
 Der erste Weg ist 
-#### ng new [projektname]
+#### ng new [projektname] [options]
 Wir starten in unserem workspace
 
 `cd workspace`
@@ -92,21 +94,23 @@ Bis es eine Lösung für dieses Problem gibt noch follgendes tun
 `npm i --save-dev angular-cli@webpack`
 
 Der zweite Weg ist 
-#### ng init
+#### ng init [options]
 Wir starten wieder in unserem workspace  
 `cd workspace`  
-wo wir einen Ordner erstellen (oder einen Vorhandenen nutzen)  
+wo wir einen Ordner erstellen (oder einen vorhandenen nutzen)  
 `mkdir hello-cli`  
 hier rufen wir `ng init --style=scss` auf.  
+
+
 Im Ordner hello-cli wurden nun dieverse Ordner und Dateien erstellt.
-Hier siend die beiden wichtgsten:
+Hier sind die beiden wichtgsten:
 #### public
 Hier werden eigene Libs oder 3rd Party libs abgelegt die dann von cli mit kopiert werden und global verfügbar sind.
 #### src
 Das ist unser entwicklungs Ordner. Hier spielt die Musik.
 
 ## Lass mal was Sehen!
-Um nun unsere App im Browser anzuzeigen mussen wir in der CMD `ng serve` ausführen.  
+Um nun unsere App im Browser anzuzeigen müssen wir in der CMD `ng serve` ausführen.  
 Anschließend können wir im Browser unter `http://localhost:4200/` die App sehen.  
 
 ![awsome](https://media.giphy.com/media/Qh6NZWsFx1G1O/giphy.gif)
@@ -115,7 +119,7 @@ Anschließend können wir im Browser unter `http://localhost:4200/` die App sehe
 Wir wollen mal eine eigene componente generieren. Eine Navigation bietet sich immer an.  
 Den Code Generator werfen wir über `ng g [type] [name]` an.  
 Wenn wir also eine Componente Navbar anlegen wollen, führen wir `ng g component navbar` in der CMD aus.  
-Die ausgabe siht dann so aus:  
+Die ausgabe sieht dann so aus:  
 `installing component`    
   `create src\app\navbar\navbar.component.scss`     
   `create src\app\navbar\navbar.component.html`     
@@ -132,12 +136,12 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component'; //<=
+import { NavbarComponent } from './navbar/navbar.component'; //<= hier der Import
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent //<=
+    NavbarComponent //<= hier die Registrierung
   ],
   imports: [
     BrowserModule,
@@ -154,7 +158,7 @@ export class AppModule {
 
 </pre>
 
-Wenn wir nun in der app.component.html \<app-navbar>\</app-navbar> schreiben, läd der Browser neu und wir sehen die Ausgabe der Component.
+Wenn wir nun in der app.component.html &lt;app-navbar&gt;&lt;/app-navbar&gt; schreiben, läd der Browser neu und wir sehen die Ausgabe der Component.
 
 <pre>
 <app-navbar></app-navbar>
@@ -189,15 +193,15 @@ h1{
 </pre>
 #### btw: Ich möchte hier keinen Designer verärgern, Ihr leistet tolle Arbeit!
 
-Diese Datei legt ihr im Ordner public ab. Der Ordner wird nicht überwacht von der Changedetection, ein Rekoad wird nur aus den src Ordner initiiert.  
+Diese Datei legt ihr im Ordner public ab. Der Ordner wird nicht überwacht von der Changedetection, ein Reload wird nur aus den src Ordner initiiert.  
 In der Index.html muss diese Datei noch eingebunden werden.  
 `<link rel="stylesheet" href="global.css">`  
 Wenn ihr jetzt speichert, wird die App neugeladen und alle h1 tags sind in deeppink.
 
 ## Test
 Wie ihr gesehen habt, werden bei jedem Element eine `*.spec.ts` mit generiert. Das ist, wie viele wissen, der Unittest.  
-Dieser wird mit `ng test` ausgeführt und verwendent Karma uns Janmine
-Für den e2e Test (die Specs findet ihr im Ordner e2e) musst ihr eine zweite CMD aufmachen.
+Dieser wird mit `ng test` ausgeführt und verwendent Karma und Jasmine.
+Für den e2e Test (die Specs findet ihr im Ordner e2e) müsst ihr eine zweite CMD aufmachen.
 In der ersten muss `ng serve` ausgeführt werden, im zweiten führt ihr `ng e2e` aus, dabei werden die Test mit Protractor ausgeführt.
 
 ## Build
@@ -210,7 +214,7 @@ Ihr könnt euch mit `ng h` die buildin Doku ansehen und unter cli.angular.io fin
 
 ## Ist das Alles?
 In naher Zukunft (evtl. schon jetzt wo du das hier liest) sollen 3rd Party Libs auch über npm installierbar sein, dann genügt ein `npm i --save [libname]` und die cli kümmert sich um den Rest.
-Auch in import von styles und scripts über die angular-cli.json soll in den nächsten versionen funktinieren. Dann kann man die global.scss im src Ordner ablegen, diese Datei in der angular-cli.json registrieren und sie wird dann von webpack mit eingebunden. Das selbe gilt für js Dateien.
+Auch ein import von styles und scripts über die angular-cli.json soll in den nächsten versionen funktinieren. Dann kann man die global.scss im src Ordner ablegen, diese Datei in der angular-cli.json registrieren und sie wird dann von webpack mit eingebunden. Das selbe gilt für .js Dateien.
 
 <pre>
 ...
